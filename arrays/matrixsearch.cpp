@@ -19,9 +19,28 @@ using namespace std;
 void MatrixSearch(int **arr , int key, int row, int col)
 {
     int start = arr[0][col-1];
-    if(key<start)
+    int r =0 , c= col-1;
+    int flag =0;
+    while(r<row && c>=0)
     {
-        
+        if(arr[r][c]==key)
+        {
+            cout<<"Element found ";
+            flag = 1;
+            break;
+        }
+        else if(arr[r][c]<key)
+        {
+            r++;
+        }
+        else
+        {
+             c--;
+        }
+    }
+    if(flag==0)
+    {
+        cout<<"Element not found ";
     }
 }
 int main()
