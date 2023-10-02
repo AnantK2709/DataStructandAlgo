@@ -18,40 +18,35 @@ using namespace std;
 
 string makeGood(string s)
 {
-    string answer = "";
-    stack<char> st;
-    stack<char> ans;
-    if (s.size() <= 1)
-    {
-        return s;
-    }
-    int i = 1;
-    st.push(s[0]);
-    while (i <= s.size() && (!st.empty()))
-    {
-        if ((s[i] == st.top() - 32) || (s[i] == st.top() + 32))
-        {
-            st.pop();
+    string answer="";
+       stack<char> st;
+       if(s.size()<=1)
+       {
+           return s;
+       }
+       int i=1;
+       st.push(s[0]);
+       while(i<=s.size() && (!st.empty()))
+       {
+           if((s[i] == st.top()-32) || (s[i]== st.top()+32))
+           {
+               st.pop();
             //    i++;
-        }
-        else
-        {
-            st.push(s[i]);
-        }
-        i++;
-    }
-
-    while (!st.empty())
-    {
-        ans.push(st.top());
-        st.pop();
-    }
-    while (!ans.empty())
-    {
-        answer = answer + ans.top();
-        ans.pop();
-    }
-    return answer;
+           }
+           else
+           {
+               st.push(s[i]);
+           }
+           i++;
+       }
+       
+       while(!st.empty())
+       {
+           answer = answer + st.top();
+           st.pop();
+       }
+       reverse(answer.begin(),answer.end());
+        return answer;
 }
 
 int main()
