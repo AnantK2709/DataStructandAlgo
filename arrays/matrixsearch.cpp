@@ -7,11 +7,7 @@ Integers in each column are sorted in ascending from top to bottom. */
 if the element is smaller then we go to the left 
 if the element is bigger then we go to down */
 
-#include <iostream>
-#include <math.h>
-#include <stdlib.h>
-#include <string.h>
-#include <limits.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 
