@@ -68,10 +68,11 @@ void Merge(int arr[] , int n , int m)
         if(arr[p1]>arr[p2])
         {
             int temp =arr[p2++];
-            for(int i=++mid;i>p1;i--)
+            for(int i=p2-1;i>p1;i--)
             {
                 arr[i] = arr[i-1];
             }
+            mid++;
             arr[p1] = temp;
             p1++;
         }
@@ -84,10 +85,11 @@ void Merge(int arr[] , int n , int m)
             if(p1==mid && p2 == m)
                 break;
             int temp = arr[p2++];
-            for(int i=++mid;i<p1;i--)
+            for(int i=p2-1;i<p1;i--)
             {
                 arr[i] = arr[i-1];
             }
+            mid++;
             arr[p1++] = temp;
         }
     }
@@ -96,12 +98,9 @@ void  MergeSort(int arr[], int n , int m)
 {
     if(m-n<=0)
         return;
-    if(m-n>=1)
-    {
-        int mid = (m+n)/2;
-        MergeSort(arr, n , mid);
-        MergeSort(arr , mid+1, m );
-    }
+    int mid = (m+n)/2;
+    MergeSort(arr, n , mid);
+    MergeSort(arr , mid+1, m );
     Merge(arr,n,m);
 }
 int main()
@@ -114,12 +113,13 @@ int main()
     {
         cin >> arr[i];
     }
-    cout << "Sorting using MergeSort";
+    cout << "Sorting using MergeSort"<<" ";
     MergeSort(arr, 0, n - 1);
     for(int i=0;i<n;i++)
     {
         cout<<arr[i]<<" ";
     }
+    cout<<endl;
 }
 
 
