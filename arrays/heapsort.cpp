@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>>
+#include <bits/stdc++.h>
 using namespace std;
 
 void Heapifying(int arr[], int n, int i)
@@ -15,6 +15,12 @@ void Heapifying(int arr[], int n, int i)
     {
         largest = r;            
     }
+    if(largest!=i)
+    {
+        swap(arr[i],arr[largest]);
+        //Recursively heapify the affected subtree
+        Heapifying(arr,n,largest);
+    }
 }
 
 void HeapSort(int arr[], int n)
@@ -23,22 +29,27 @@ void HeapSort(int arr[], int n)
     {                                    // therfore it starts with n/2-1 ->nodes with childs
         Heapifying(arr, n, i);
     }
-    for (int i = n; i >= 1; i--)
+    for(int i=n-1;i>=0;i--)
     {
-        int curMax = getMax(H);
-        deleteMax(H);
-        arr[i] = currMax;
+        swap(arr[0],arr[i]);
+        Heapifying(arr,i,0);
     }
 }
+
 int main()
 {
     int n;
-    cout << "Enter the size of the array";
+    cout << "Enter the size of the array: ";
     cin >> n;
     int arr[n];
-    Heapsort(arr, n);
     for (int i = 0; i < n; i++)
     {
-        cout << arr[i];
+        cin >> arr[i];
     }
+    HeapSort(arr, n);
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i]<<" ";
+    }
+    cout<<endl;
 }
